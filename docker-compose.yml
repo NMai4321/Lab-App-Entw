@@ -9,7 +9,7 @@ services:
     networks:
       - app-network
 
-  java-app:
+  java-apps:
     build:
       context: .
       dockerfile: Dockerfile
