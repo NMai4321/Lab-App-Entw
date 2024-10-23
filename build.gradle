@@ -23,7 +23,7 @@ dependencies {
 }
 
 bootJar {
-    mainClassName = 'com.example.calculator.Application' 
+    mainClass = 'com.example.calculator.Application' 
 }
 
 tasks.named('test') {
