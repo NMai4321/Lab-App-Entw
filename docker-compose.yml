@@ -9,16 +9,12 @@ services:
     networks:
       - app-network
 
-  java-apps:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  java-app:
+    build: .
     container_name: java-app
-    restart: "no"
-    ports:
-      - 8081:8080
     depends_on:
-      - assessment
+      - assessment-service
+    network_mode: service:assessment-service
       
 networks:
   app-network:
