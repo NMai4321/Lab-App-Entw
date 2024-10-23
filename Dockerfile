@@ -12,7 +12,8 @@ COPY gradle ./gradle
 RUN gradle dependencies --no-daemon
 
 # Copy the rest of the application code
-COPY src ./src
+COPY ./calculator/src ./src
+
 
 # Build the Spring Boot application
 RUN gradle bootJar --no-daemon
