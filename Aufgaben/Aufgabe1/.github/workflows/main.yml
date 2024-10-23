@@ -27,7 +27,6 @@ jobs:
         run: docker pull mrksdh/assessment
 
       - name: Run docker-compose containers
-        working-directory: calculator
         run: docker-compose up -d
 
       - name: Test API funktion
@@ -35,5 +34,4 @@ jobs:
           sleep 10
           curl http://localhost:8080/v1/health
       - name: Shutdown Docker Compose
-        working-directory: calculator
         run: docker-compose down
