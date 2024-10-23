@@ -1,21 +1,22 @@
 version: '3.8'
 services:
-  assessment-service:
+  assessment:
     image: mrksdh/assessment
-    container_name: assessment-service
+    container_name: assessment
+    restart: unless-stopped
     ports:
-      - "8080:8080"
+      - 8080:8080
     networks:
       - myNetwork
 
   java-app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: java-app
     depends_on:
-      - assessment-service
-    environment:
-      - DATASET_SERVICE_URL=http://assessment-service:8080/data
-      - RESULT_SERVICE_URL=http://assessment-service:8080/result
+      - assessment
+    restart: "no"
     ports:
       - "8081:8080"
     networks:
