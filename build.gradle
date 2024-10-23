@@ -29,14 +29,3 @@ bootJar {
 tasks.named('test') {
 	useJUnitPlatform()
 }
-
-tasks {
-    shadowJar {
-        archiveBaseName.set("app")
-        archiveClassifier.set("")
-        archiveVersion.set(version.toString())
-        manifest {
-            attributes["Application-Class"] = "com.example.calculator.Application"
-        }
-    }
-}
