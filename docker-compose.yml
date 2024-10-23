@@ -14,10 +14,11 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: java-app
+    restart: "no"
+    ports:
+      - 8081:8080
     depends_on:
       - assessment
-    network_mode: service:assessment
-    restart: "no"
       
 networks:
   app-network:
