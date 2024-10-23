@@ -12,7 +12,7 @@ COPY gradle ./gradle
 RUN gradle build --no-daemon || return 0
 
 # Copy the rest of the application code
-COPY src /app/src
+COPY . .
 
 # Build the Spring Boot application
 RUN gradle build --no-daemon
