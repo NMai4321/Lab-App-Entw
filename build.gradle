@@ -16,6 +16,10 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'com.fasterxml.jackson.core:jackson-databind'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	
+	implementation("com.google.code.gson:gson:2.11.0")
+	testImplementation(platform("org.junit:junit-bom:5.10.0"))
+        testImplementation("org.junit.jupiter:junit-jupiter")
 }
 
 bootJar {
@@ -24,4 +28,15 @@ bootJar {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+tasks {
+    shadowJar {
+        archiveBaseName.set("app")
+        archiveClassifier.set("")
+        archiveVersion.set(version.toString())
+        manifest {
+            attributes["Application-Class"] = "com.example.calculator.Application"
+        }
+    }
 }
