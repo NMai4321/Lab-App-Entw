@@ -9,13 +9,13 @@ COPY build.gradle settings.gradle ./
 COPY gradle ./gradle
 
 # Download dependencies before copying the entire project
-RUN gradle build --no-daemon || return 0
+RUN gradle dependencies --no-daemon
 
 # Copy the rest of the application code
-#COPY . .
+COPY src ./src
 
 # Build the Spring Boot application
-#RUN gradle build --no-daemon
+RUN gradle bootJar --no-daemon
 
 # Use an official OpenJDK runtime as a base image for running the application
 FROM openjdk:17-jdk-slim
