@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  assessment:
+    image: mrksdh/assessment
+    container_name: assessment
+    restart: unless-stopped
+    ports:
+      - 8080:8080
+    networks:
+      - app-network
+
+  java-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: java-app
+    depends_on:
+      - assessment
+    network_mode: service:assessment
+    restart: "no"
+      
+networks:
+  app-network:
+    driver: bridge
